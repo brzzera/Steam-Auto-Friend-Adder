@@ -69,3 +69,5 @@ A **Python** script to automate sending friend requests on Steam from members of
 ---
 
 If you want me to help you add **installation instructions**, **example outputs**, or anything else, just ask!
+
+> By: brzera
