@@ -1,73 +1,125 @@
-# Steam Auto Friend Adder
+# 🚀 Steam Auto Friend Adder v2.0
 
-A **Python** script to automate sending friend requests on Steam from members of a specific group.
-
----
-
-## 🚀 What it does
-
-- Scrapes the first members of a public Steam group.
-- Checks if each member’s **SteamID64** is in the correct format.
-- Asks the user whether to send a friend request to that profile.
-- Sends the friend request via **POST** request using valid Steam session cookies.
-- Pauses between requests to avoid **flood restrictions**.
+**Author:** brzera
+**Language:** Python
 
 ---
 
-## ⚙️ Requirements
+## Overview
 
-- **Python 3.7+**
-- Libraries: `requests`, `beautifulsoup4`
-- Valid Steam session cookies: `steamLoginSecure` and `sessionid` for authentication
+**Steam Auto Friend Adder v2.0** is a Python script that automates sending friend requests to members of a specified Steam group.
+This version supports both **SteamID64** and **Vanity URLs**, automatically converting Vanity URLs to SteamID64 using the Steam Web API.
 
 ---
 
-## 🛠 How to use
+## Features
 
-1. Insert your valid Steam cookies in the `COOKIES` dictionary inside the script.
-2. Change the group URL in the `GROUP_URL` variable to the Steam group you want to scrape.
-3. Run the script:
+* Fetches the first members from any **public Steam group**.
+* Supports **Vanity URLs** (custom profile names) and converts them to SteamID64.
+* Interactive mode to confirm each friend request.
+* Optional automatic mode to send requests to all members without prompts.
+* Delay between requests to reduce the risk of triggering Steam flood protection.
+* Uses **Steam session cookies** (`steamLoginSecure` and `sessionid`) for authentication.
+
+---
+
+## Requirements
+
+* Python 3.7 or higher
+* `requests` and `beautifulsoup4` libraries:
+
+  ```bash
+  pip install requests beautifulsoup4
+  ```
+* A **Steam account** (not limited)
+* Steam **session cookies** (`steamLoginSecure` and `sessionid`)
+* Steam **Web API Key**
+
+---
+
+## Getting Your Steam Web API Key
+
+1. Log in to your Steam account.
+2. Go to [https://steamcommunity.com/dev/apikey](https://steamcommunity.com/dev/apikey)
+3. Fill in the **Domain Name** (use `localhost` for personal scripts).
+4. Click **“I agree – Register”**.
+5. Copy the API Key provided.
+6. Paste it in the script under:
+
+   ```python
+   STEAM_API_KEY = "YOUR_API_KEY_HERE"
+   ```
+
+---
+
+## Getting Your Steam Session Cookies
+
+1. Log in to [Steam](https://steamcommunity.com/) in your browser.
+2. Press `F12` → **Application** → **Cookies**.
+3. Copy:
+
+   * `steamLoginSecure`
+   * `sessionid`
+4. Paste them in the script:
+
+   ```python
+   COOKIES = {
+       'steamLoginSecure': 'PASTE_HERE',
+       'sessionid': 'PASTE_HERE'
+   }
+   ```
+
+> ⚠️ Keep your cookies private. Do not share them.
+
+---
+
+## Usage
+
+1. Update your **Steam cookies** and **API Key** in the script.
+2. Set your **target Steam group URL**:
+
+   ```python
+   GROUP_URL = 'https://steamcommunity.com/groups/YOUR_GROUP/members'
+   ```
+3. Set `MAX_USERS` to the number of members you want to add.
+4. Choose mode:
+
+   * `AUTO_MODE = False` → interactive (confirm each friend request)
+   * `AUTO_MODE = True` → automatically add all members
+5. Run the script:
+
    ```bash
-   python add_friends.py
+   python steam_auto_friend_adder.py
    ```
-4. For each user found, the script will ask:
-   ```
-   [?] Add https://steamcommunity.com/profiles/STEAMID64? (y/n)
-   ```
-   Reply **`y`** to send a friend request or **`n`** to skip.
 
 ---
 
-## 🔍 How to find SteamIDs64
+## Notes & Warnings
 
-- Go to any Steam user’s profile.
-- If the URL looks like this:
-  
-  `https://steamcommunity.com/profiles/76561198012345678`
-  
-  then `76561198012345678` is their **SteamID64**.
-
-- If the URL is a custom URL like:
-  
-  `https://steamcommunity.com/id/customname/`
-  
-  you can convert it to SteamID64 by using tools such as:
-
-  - [SteamID Finder](https://steamidfinder.com/)
-  - [SteamRep](https://steamrep.com/)
-  
-  Just paste the custom URL or username and get the corresponding SteamID64.
+* The script **does not check** if the friend request was already sent.
+* Automating friend requests may violate Steam’s **Terms of Service**. Use responsibly.
+* Keep a **delay between requests** (`time.sleep(2)`) to avoid flood protection.
+* Start with a small number of friends to test.
 
 ---
 
-## ⚠️ Warning
+## Example
 
-- Using this script **may violate Steam’s Terms of Service**. Use responsibly and at your own risk.
-- The script **does not check if you are already friends or if a request was already sent**.
-- It's recommended to have delays between requests (default 2 seconds) to avoid **temporary bans**.
+```python
+# Interactive mode example
+AUTO_MODE = False
+MAX_USERS = 20
+GROUP_URL = 'https://steamcommunity.com/groups/the_wired/members'
+```
+
+```python
+# Automatic mode example
+AUTO_MODE = True
+MAX_USERS = 50
+GROUP_URL = 'https://steamcommunity.com/groups/the_wired/members'
+```
 
 ---
 
-If you want me to help you add **installation instructions**, **example outputs**, or anything else, just ask!
-
-> By: brzera
+**Enjoy your new Steam Auto Friend Adder v2.0! 🚀**
+Created by brzera
