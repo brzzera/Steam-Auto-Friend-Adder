@@ -280,7 +280,7 @@ Example:
 ```text
 --- ADD LOGIN ---
 
-Account name / alias: TheBigRooster
+Account name / alias: YourNickname
 
 Paste the Steam credentials.
 They will not be shown while typing.
@@ -293,7 +293,7 @@ Steam Web API Key:
 After entering the credentials:
 
 ```text
-[+] Account 'TheBigRooster' saved.
+[+] Account 'YourNickname' saved.
 ```
 
 The credential fields are hidden while typing.
@@ -313,7 +313,7 @@ Example:
 ```text
 --- LOGIN ACCOUNT ---
 
-1 - TheBigRooster
+1 - YourNickname
 2 - AltAccount
 0 - Cancel
 
@@ -325,7 +325,7 @@ The program checks whether the saved Steam session is still valid.
 If successful:
 
 ```text
-[+] Logged into saved profile: TheBigRooster
+[+] Logged into saved profile: YourNickname
 ```
 
 If the cookies expired:
@@ -467,7 +467,7 @@ The JSON database looks similar to:
 ```json
 {
     "accounts": {
-        "TheBigRooster": {
+        "YourNickname": {
             "tracked_sent": [
                 "76561198XXXXXXXXX",
                 "76561198XXXXXXXXX"
@@ -644,7 +644,7 @@ Select:
 Select the saved account and confirm:
 
 ```text
-Delete 'TheBigRooster'? (y/n):
+Delete 'YourNickname'? (y/n):
 ```
 
 Deleting an account removes:
